@@ -143,24 +143,69 @@
             word-break: break-word;
         }
 
-        .signature-box {
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 8px;
-            padding: 12px 16px;
+        /* RECUADRO VISUAL DE LA FIRMA */
+        .signature-card {
+            background-color: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 14px;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
-        .signature-status {
-            font-size: 13px;
+        .signature-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .signature-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .signature-badge {
+            font-size: 11px;
             font-weight: 700;
             color: #15803d;
+            background-color: #dcfce7;
+            padding: 3px 8px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+        }
+
+        .signature-box-display {
+            background-color: #ffffff;
+            border: 1px dashed #94a3b8;
+            border-radius: 6px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .signature-box-display img {
+            max-height: 80px;
+            max-width: 95%;
+            object-fit: contain;
+        }
+
+        .signature-watermark {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            font-size: 9px;
+            color: #cbd5e1;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         .hash-box {
@@ -247,16 +292,26 @@
             </div>
         </div>
 
-        <div class="section-title">Validación de Firma FES</div>
+        <div class="section-title">Recuadro de Firma FES Contratista</div>
 
-        <div class="signature-box">
-            <div>
-                <div class="data-label">Firma Contratista (Encuesta)</div>
-                <div class="data-value" style="font-size: 12px; color: #475569;">Recepción / Descargo registrado</div>
+        <!-- RECUADRO DE LA FIRMA -->
+        <div class="signature-card">
+            <div class="signature-header">
+                <span class="signature-title">Firma Registrar en Encuesta</span>
+                <div class="signature-badge">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    FES Registrada
+                </div>
             </div>
-            <div class="signature-status" id="lbl-fc">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span id="txt-fc">FES Firmado</span>
+            <div class="signature-box-display">
+                <!-- Imagen de la firma si existe URL en el QR, de lo contrario muestra el sello -->
+                <img id="img-firma" src="" alt="Firma FES" style="display:none;">
+                <div id="txt-sello" style="text-align: center; color: #334155;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3e96b4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                    <div style="font-size: 11px; font-weight: bold; margin-top: 4px;">FIRMA ELECTRÓNICA SIMPLE CONFORME</div>
+                    <div style="font-size: 9px; color: #64748b;">Acreditada en Formulario Survey123</div>
+                </div>
+                <span class="signature-watermark">DAOM Providencia</span>
             </div>
         </div>
 
@@ -282,20 +337,13 @@
     document.getElementById('lbl-contratista').textContent = urlParams.get('c') || 'N/A';
     document.getElementById('lbl-hash').textContent = urlParams.get('h') || 'N/A';
 
-    const fcVal = urlParams.get('fc') || urlParams.get('firma_conforme');
-    const txtFc = document.getElementById('txt-fc');
-    
-    if (fcVal) {
-        if (fcVal.toLowerCase() === 'no' || fcVal === '0' || fcVal.toLowerCase() === 'pendiente') {
-            document.getElementById('lbl-fc').style.color = '#dc2626';
-            document.querySelector('.signature-box').style.backgroundColor = '#fef2f2';
-            document.querySelector('.signature-box').style.borderColor = '#fecaca';
-            txtFc.textContent = 'Pendiente de Firma';
-        } else {
-            txtFc.textContent = fcVal.length > 20 ? 'FES Firmado' : fcVal;
-        }
-    } else {
-        txtFc.textContent = 'FES Conforme';
+    // Si viene la URL de la imagen de la firma (parámetro img)
+    const imgUrl = urlParams.get('img') || urlParams.get('img_fc');
+    if (imgUrl) {
+        const imgElement = document.getElementById('img-firma');
+        imgElement.src = imgUrl;
+        imgElement.style.display = 'block';
+        document.getElementById('txt-sello').style.display = 'none';
     }
 </script>
 
