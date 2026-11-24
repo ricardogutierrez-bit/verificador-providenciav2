@@ -1,269 +1,158 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificación de Hoja de Servicio - Municipalidad de Providencia</title>
-    <style>
-        :root {
-            --primary: #3e96b4;
-            --primary-dark: #2c6e85;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --success: #10b981;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            padding: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 520px;
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-
-        .header {
-            background-color: var(--primary);
-            color: white;
-            padding: 24px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .header h1 {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .header p {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        .badge-verified {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #dcfce7;
-            color: #15803d;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin: 16px auto 0 auto;
-            border: 1px solid #bbf7d0;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        .folio-box {
-            background-color: #f1f5f9;
-            border-radius: 8px;
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .folio-title {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .folio-number {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary-dark);
-        }
-
-        .section-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-            padding-bottom: 4px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .grid-data {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .data-item {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .data-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .data-value {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text);
-            word-break: break-word;
-        }
-
-        .hash-box {
-            background: #fafafa;
-            border: 1px dashed var(--border);
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 16px;
-        }
-
-        .hash-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .hash-code {
-            font-family: monospace;
-            font-size: 10px;
-            color: #475569;
-            word-break: break-all;
-        }
-
-        .footer {
-            padding: 16px 20px;
-            background-color: #f8fafc;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        @media (min-width: 480px) {
-            .grid-data {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verificador Oficial - Municipalidad de Providencia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4 font-sans text-slate-800">
 
-<div class="container">
-    <div class="header">
-        <h1>MUNICIPALIDAD DE PROVIDENCIA</h1>
-        <p>Dirección de Medio Ambiente, Aseo, Ornato y Mantención</p>
-        <div class="badge-verified">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            DOCUMENTO OFICIAL VERIFICADO
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="folio-box">
-            <div>
-                <div class="folio-title">Documento Digital</div>
-                <div style="font-size: 14px; font-weight: 600;">Hoja de Servicio</div>
-            </div>
-            <div style="text-align: right;">
-                <div class="folio-title">Folio N°</div>
-                <div class="folio-number" id="lbl-folio">0000</div>
-            </div>
-        </div>
-
-        <div class="section-title">Información General</div>
-        
-        <div class="grid-data">
-            <div class="data-item">
-                <span class="data-label">ID Requerimiento</span>
-                <span class="data-value" id="lbl-req">-</span>
-            </div>
-            <div class="data-item">
-                <span class="data-label">Inspector (IMC)</span>
-                <span class="data-value" id="lbl-imc">-</span>
-            </div>
-            <div class="data-item">
-                <span class="data-label">Área Verde</span>
-                <span class="data-value" id="lbl-area">-</span>
-            </div>
-            <div class="data-item">
-                <span class="data-label">Labor Inspeccionada</span>
-                <span class="data-value" id="lbl-labor">-</span>
-            </div>
-            <div class="data-item">
-                <span class="data-label">Empresa Contratista</span>
-                <span class="data-value" id="lbl-contratista">-</span>
-            </div>
-            <div class="data-item">
-                <span class="data-label">Fecha de Requerimiento</span>
-                <span class="data-value" id="lbl-fecha">-</span>
-            </div>
-            <div class="data-item">
-                <span class="data-label">Plazo Otorgado</span>
-                <span class="data-value" id="lbl-plazo">-</span>
-            </div>
-        </div>
-
-        <div class="hash-box">
-            <div class="hash-title">Huella Digital SHA-256 (Inalterable)</div>
-            <div class="hash-code" id="lbl-hash">----------------------------------------------------------------</div>
-        </div>
-    </div>
-
-    <div class="footer">
-        Verificación de Registro en Servidor DAOM - Providencia<br>
-        Documento validado digitalmente.
-    </div>
-</div>
-
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
+  <div class="max-w-md w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
     
-    document.getElementById('lbl-folio').textContent = urlParams.get('f') || '0000';
-    document.getElementById('lbl-req').textContent = urlParams.get('id') || 'N/A';
-    document.getElementById('lbl-imc').textContent = urlParams.get('imc') || 'N/A';
-    document.getElementById('lbl-area').textContent = urlParams.get('av') || 'N/A';
-    document.getElementById('lbl-labor').textContent = urlParams.get('l') || 'N/A';
-    document.getElementById('lbl-contratista').textContent = urlParams.get('c') || 'N/A';
-    document.getElementById('lbl-fecha').textContent = urlParams.get('fecha') || 'N/A';
-    document.getElementById('lbl-plazo').textContent = urlParams.get('plazo') || 'N/A';
-    document.getElementById('lbl-hash').textContent = urlParams.get('h') || 'N/A';
-</script>
+    <!-- Cabecera Institucional (Intacta) -->
+    <div class="bg-[#3E96B4] text-white px-6 py-6 text-center">
+      <h1 class="text-lg font-bold tracking-wide">MUNICIPALIDAD DE PROVIDENCIA</h1>
+      <p class="text-xs text-sky-100 mt-1">Dirección de Medio Ambiente, Aseo, Ornato y Mantención</p>
+      <div id="badge-estado" class="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 font-bold text-xs px-4 py-1.5 rounded-full mt-4 shadow-sm">
+        <span id="badge-icono">✔</span>
+        <span id="badge-texto">DOCUMENTO OFICIAL VERIFICADO</span>
+      </div>
+    </div>
 
+    <!-- Contenido -->
+    <div class="p-6 space-y-5">
+      
+      <!-- Tarjeta Folio (Intacta) -->
+      <div class="bg-slate-50 border-l-4 border-[#3E96B4] rounded-xl p-4 flex justify-between items-center shadow-sm">
+        <div>
+          <span class="text-[10px] font-bold uppercase text-slate-400 block">DOCUMENTO DIGITAL</span>
+          <strong class="text-base text-slate-900">Hoja de Servicio</strong>
+        </div>
+        <div class="text-right">
+          <span class="text-[10px] font-bold uppercase text-slate-400 block">FOLIO N°</span>
+          <strong class="text-lg font-extrabold text-[#3E96B4]" id="val-folio">-</strong>
+        </div>
+      </div>
+
+      <!-- Información General (10 ítems solicitados) -->
+      <div>
+        <h2 class="text-xs font-bold uppercase text-[#3E96B4] border-b border-slate-200 pb-1.5 mb-3.5 tracking-wider">
+          INFORMACIÓN GENERAL
+        </h2>
+        
+        <div class="space-y-3 text-xs">
+          
+          <!-- 1. ID Requerimiento -->
+          <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+            <span class="text-[10px] font-bold uppercase text-slate-400 block">ID REQUERIMIENTO</span>
+            <strong class="text-slate-900 font-mono text-[11px] break-all" id="val-id">-</strong>
+          </div>
+
+          <!-- 2. Fecha Emisión Documento y 3. Sector -->
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+              <span class="text-[10px] font-bold uppercase text-slate-400 block">FECHA DE EMISIÓN</span>
+              <strong class="text-slate-900" id="val-emision">-</strong>
+            </div>
+            <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+              <span class="text-[10px] font-bold uppercase text-slate-400 block">SECTOR</span>
+              <strong class="text-slate-900" id="val-sector">-</strong>
+            </div>
+          </div>
+
+          <!-- 4. Área Verde -->
+          <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+            <span class="text-[10px] font-bold uppercase text-slate-400 block">ÁREA VERDE</span>
+            <strong class="text-slate-900" id="val-av">-</strong>
+          </div>
+
+          <!-- 5. Inspector (IMC) -->
+          <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+            <span class="text-[10px] font-bold uppercase text-slate-400 block">INSPECTOR (IMC)</span>
+            <strong class="text-slate-900" id="val-imc">-</strong>
+          </div>
+
+          <!-- 6. Empresa Contratista -->
+          <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+            <span class="text-[10px] font-bold uppercase text-slate-400 block">EMPRESA CONTRATISTA</span>
+            <strong class="text-slate-900" id="val-empresa">-</strong>
+          </div>
+
+          <!-- 7. Labor Inspeccionada -->
+          <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+            <span class="text-[10px] font-bold uppercase text-slate-400 block">LABOR INSPECCIONADA</span>
+            <strong class="text-slate-900" id="val-labor">-</strong>
+          </div>
+
+          <!-- 8. Solicitud Específica -->
+          <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+            <span class="text-[10px] font-bold uppercase text-slate-400 block">SOLICITUD ESPECÍFICA</span>
+            <strong class="text-slate-900" id="val-solicitud">-</strong>
+          </div>
+
+          <!-- 9. Fecha de Requerimiento y 10. Plazo Otorgado -->
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+              <span class="text-[10px] font-bold uppercase text-slate-400 block">FECHA DE REQUERIMIENTO</span>
+              <strong class="text-slate-900" id="val-freq">-</strong>
+            </div>
+            <div class="bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
+              <span class="text-[10px] font-bold uppercase text-slate-400 block">PLAZO OTORGADO</span>
+              <strong class="text-[#3E96B4]" id="val-plazo">-</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Huella SHA-256 -->
+      <div class="bg-slate-50 border border-dashed border-slate-300 rounded-xl p-3.5">
+        <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">HUELLA DIGITAL SHA-256 (INALTERABLE)</span>
+        <code class="text-[11px] text-slate-700 break-all font-mono leading-relaxed" id="val-hash">-</code>
+      </div>
+
+    </div>
+
+    <!-- Pie -->
+    <div class="bg-slate-50 border-t border-slate-200 px-6 py-4 text-center text-[11px] text-slate-500">
+      Verificación de Registro en Servidor DAOM - Providencia<br />
+      Documento validado digitalmente.
+    </div>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    function obtenerParam(listaClaves, fallback = "N/A") {
+      for (const clave of listaClaves) {
+        const val = params.get(clave);
+        if (val && val.trim() !== "") return val.trim();
+      }
+      return fallback;
+    }
+
+    // Cambiar sello superior si el documento fue anulado
+    if (params.get("anulado") === "1") {
+      const badge = document.getElementById("badge-estado");
+      badge.className = "inline-flex items-center gap-1.5 bg-red-100 text-red-800 font-bold text-xs px-4 py-1.5 rounded-full mt-4 shadow-sm";
+      document.getElementById("badge-icono").innerText = "✖";
+      document.getElementById("badge-texto").innerText = "FOLIO ANULADO - SIN EFECTO LEGAL";
+    }
+
+    document.getElementById("val-folio").innerText = obtenerParam(["f", "folio"], "SIN FOLIO").toUpperCase();
+    document.getElementById("val-id").innerText = obtenerParam(["id"]);
+    document.getElementById("val-emision").innerText = obtenerParam(["emision", "fecha_emision"]);
+    document.getElementById("val-sector").innerText = obtenerParam(["sec", "sector"]);
+    document.getElementById("val-av").innerText = obtenerParam(["av"]);
+    document.getElementById("val-imc").innerText = obtenerParam(["imc"]);
+    document.getElementById("val-empresa").innerText = obtenerParam(["c", "empresa"]);
+    document.getElementById("val-labor").innerText = obtenerParam(["l", "labor"]);
+    document.getElementById("val-solicitud").innerText = obtenerParam(["sol", "solicitud"]);
+    document.getElementById("val-freq").innerText = obtenerParam(["freq", "fecha"]);
+    document.getElementById("val-plazo").innerText = obtenerParam(["plazo"]);
+    document.getElementById("val-hash").innerText = obtenerParam(["h", "hash"]);
+  </script>
 </body>
 </html>
